@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aabhushan Jewels - Premium Jewellery Catalogue</title>
+    <meta name="description" content="Explore our exquisite collection of handcrafted jewellery. Pure gold, diamonds, and precious stones for every occasion.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <div class="header-container">
+            <div class="logo">✨ Aabhushan</div>
+            <nav id="mainNav">
+                <a href="index.html" class="active">Home</a>
+                <a href="collections.html">Collections</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Timeless Elegance</h1>
+            <p>Discover our exquisite collection of handcrafted jewellery</p>
+            <a href="collections.html" class="cta-button">Explore Collections</a>
+            <a href="#featured" class="cta-button cta-button-secondary">Featured Pieces</a>
+        </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS SECTION -->
+    <section id="featured" class="container">
+        <h2>Featured Collections</h2>
+        <div class="products-grid" id="featuredProducts">
+            <!-- Featured products will be loaded here by JavaScript -->
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="collections.html" class="cta-button">View All Products</a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="container">
+        <h2>Why Choose Aabhushan Jewels?</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+            <div style="background-color: var(--secondary-color); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">💎 Premium Quality</h3>
+                <p>Handpicked precious stones and pure gold, certified for authenticity and excellence.</p>
+            </div>
+            <div style="background-color: var(--secondary-color); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">🎨 Expert Craftsmanship</h3>
+                <p>Each piece is carefully designed and crafted by our master jewellers with decades of experience.</p>
+            </div>
+            <div style="background-color: var(--secondary-color); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">✨ Timeless Designs</h3>
+                <p>From traditional to contemporary, our collection suits every taste and occasion.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIES SECTION -->
+    <section class="container" id="contact">
+        <h2>Our Collections</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+            <a href="collections.html?category=Rings" style="text-decoration: none;">
+                <div style="background-color: var(--secondary-color); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color); text-align: center; transition: var(--transition); cursor: pointer;" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.boxShadow='0 15px 40px rgba(212, 175, 55, 0.2)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">💍</div>
+                    <h3 style="color: var(--accent-color);">Rings</h3>
+                    <p>Classic to contemporary designs</p>
+                </div>
+            </a>
+            <a href="collections.html?category=Necklaces" style="text-decoration: none;">
+                <div style="background-color: var(--secondary-color); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color); text-align: center; transition: var(--transition); cursor: pointer;" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.boxShadow='0 15px 40px rgba(212, 175, 55, 0.2)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">👗</div>
+                    <h3 style="color: var(--accent-color);">Necklaces</h3>
+                    <p>Statement pieces and everyday wear</p>
+                </div>
+            </a>
+            <a href="collections.html?category=Earrings" style="text-decoration: none;">
+                <div style="background-color: var(--secondary-color); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color); text-align: center; transition: var(--transition); cursor: pointer;" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.boxShadow='0 15px 40px rgba(212, 175, 55, 0.2)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">💎</div>
+                    <h3 style="color: var(--accent-color);">Earrings</h3>
+                    <p>Elegant studs to chandelier styles</p>
+                </div>
+            </a>
+            <a href="collections.html?category=Bracelets" style="text-decoration: none;">
+                <div style="background-color: var(--secondary-color); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color); text-align: center; transition: var(--transition); cursor: pointer;" onmouseover="this.style.borderColor='var(--accent-color)'; this.style.boxShadow='0 15px 40px rgba(212, 175, 55, 0.2)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='none'">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">✨</div>
+                    <h3 style="color: var(--accent-color);">Bracelets</h3>
+                    <p>Wrist adornments of luxury</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Aabhushan Jewels</h3>
+                    <p>Premium handcrafted jewellery for life's most precious moments.</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/919999999999" target="_blank" title="WhatsApp">💬</a>
+                        <a href="#" target="_blank" title="Instagram">📷</a>
+                        <a href="#" target="_blank" title="Facebook">👍</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Collections</h3>
+                    <ul>
+                        <li><a href="collections.html?category=Rings">Rings</a></li>
+                        <li><a href="collections.html?category=Necklaces">Necklaces</a></li>
+                        <li><a href="collections.html?category=Earrings">Earrings</a></li>
+                        <li><a href="collections.html?category=Bracelets">Bracelets</a></li>
+                        <li><a href="collections.html">All Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><strong>Email:</strong> info@aabhushanJewels.com</p>
+                    <p><strong>Phone:</strong> +91 99999 99999</p>
+                    <p><strong>Address:</strong> Premium Jewellery Store<br>New Delhi, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aabhushan Jewels. All rights reserved. | Designed as a college project</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+            });
+        });
+
+        // Load featured products
+        function loadFeaturedProducts() {
+            const featured = getFeaturedProducts();
+            const container = document.getElementById('featuredProducts');
+
+            container.innerHTML = featured.map(product => `
+                <div class="product-card" onclick="navigateToProduct('${product.id}')">
+                    <div class="product-image">
+                        ${product.images && product.images[0] ? `<img src="${product.images[0]}" alt="${product.name}">` : '💍'}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="product-details">
+                            <p class="text-small"><strong>Purity:</strong> ${product.purity}</p>
+                            <p class="text-small"><strong>Weight:</strong> ${product.weight}</p>
+                        </div>
+                        <div class="product-price">${product.price}</div>
+                        <button class="product-button">View Details</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function navigateToProduct(productId) {
+            window.location.href = `product.html?id=${productId}`;
+        }
+
+        // Load featured products on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadFeaturedProducts);
+        } else {
+            loadFeaturedProducts();
+        }
+    </script>
+</body>
+</html>

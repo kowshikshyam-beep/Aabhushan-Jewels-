@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Aabhushan Jewels</title>
+    <meta name="description" content="View detailed information about our premium jewellery pieces.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <div class="header-container">
+            <div class="logo">✨ Aabhushan</div>
+            <nav id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="collections.html">Collections</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- BREADCRUMB NAVIGATION -->
+    <div style="background-color: var(--secondary-color); border-bottom: 1px solid var(--border-color); padding: 1rem 0;">
+        <div class="container">
+            <a href="index.html" style="color: var(--text-secondary);">Home</a>
+            <span style="color: var(--text-secondary);">&nbsp;/&nbsp;</span>
+            <a href="collections.html" style="color: var(--text-secondary);">Collections</a>
+            <span style="color: var(--text-secondary);">&nbsp;/&nbsp;</span>
+            <span id="breadcrumbTitle" style="color: var(--accent-color);">Product</span>
+        </div>
+    </div>
+
+    <!-- MAIN PRODUCT SECTION -->
+    <section class="container">
+        <div id="productContainer">
+            <!-- Product details will be loaded here by JavaScript -->
+            <div style="text-align: center; padding: 3rem;">
+                <p style="color: var(--text-secondary);">Loading product details...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RELATED PRODUCTS SECTION -->
+    <section class="container" id="relatedSection" style="display: none;">
+        <h2>Related Products</h2>
+        <div class="products-grid" id="relatedProducts">
+            <!-- Related products will be loaded here -->
+        </div>
+    </section>
+
+    <!-- IMAGE ZOOM MODAL -->
+    <div id="zoomModal" class="zoom-modal">
+        <div class="zoom-content">
+            <button class="zoom-close" id="zoomClose">&times;</button>
+            <img id="zoomImage" class="zoom-image" src="" alt="Zoomed product image">
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Aabhushan Jewels</h3>
+                    <p>Premium handcrafted jewellery for life's most precious moments.</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/919999999999" target="_blank" title="WhatsApp">💬</a>
+                        <a href="#" target="_blank" title="Instagram">📷</a>
+                        <a href="#" target="_blank" title="Facebook">👍</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Collections</h3>
+                    <ul>
+                        <li><a href="collections.html?category=Rings">Rings</a></li>
+                        <li><a href="collections.html?category=Necklaces">Necklaces</a></li>
+                        <li><a href="collections.html?category=Earrings">Earrings</a></li>
+                        <li><a href="collections.html?category=Bracelets">Bracelets</a></li>
+                        <li><a href="collections.html">All Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><strong>Email:</strong> info@aabhushanJewels.com</p>
+                    <p><strong>Phone:</strong> +91 99999 99999</p>
+                    <p><strong>Address:</strong> Premium Jewellery Store<br>New Delhi, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aabhushan Jewels. All rights reserved. | Designed as a college project</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/zoom.js"></script>
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+            });
+        });
+
+        // Get product ID from URL
+        function getProductIdFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+        }
+
+        // Load and display product details
+        function loadProductDetails() {
+            const productId = getProductIdFromURL();
+
+            if (!productId) {
+                document.getElementById('productContainer').innerHTML = `
+                    <div style="text-align: center; padding: 3rem;">
+                        <h2>Product Not Found</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem;">The requested product does not exist.</p>
+                        <a href="collections.html" class="cta-button">Back to Collections</a>
+                    </div>
+                `;
+                return;
+            }
+
+            const product = getProductById(productId);
+
+            if (!product) {
+                document.getElementById('productContainer').innerHTML = `
+                    <div style="text-align: center; padding: 3rem;">
+                        <h2>Product Not Found</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem;">The requested product does not exist.</p>
+                        <a href="collections.html" class="cta-button">Back to Collections</a>
+                    </div>
+                `;
+                return;
+            }
+
+            // Update breadcrumb
+            document.getElementById('breadcrumbTitle').textContent = product.name;
+
+            // Update page title
+            document.title = `${product.name} - Aabhushan Jewels`;
+
+            // Create WhatsApp enquiry message
+            const whatsappMessage = `Hello, I'm interested in your ${product.name} (${product.purity}, ${product.weight}). Could you please provide more details and pricing?`;
+            const whatsappLink = `https://wa.me/919999999999?text=${encodeURIComponent(whatsappMessage)}`;
+
+            // Build image gallery HTML
+            let thumbnailsHTML = '';
+            if (product.images && product.images.length > 0) {
+                thumbnailsHTML = product.images.map((img, index) => `
+                    <div class="thumbnail ${index === 0 ? 'active' : ''}">
+                        <img src="${img}" alt="Product image ${index + 1}">
+                    </div>
+                `).join('');
+            }
+
+            // Render product details
+            const productHTML = `
+                <div class="product-detail-container">
+                    <div class="product-gallery">
+                        <div class="main-image">
+                            ${product.images && product.images[0] ? `<img src="${product.images[0]}" alt="${product.name}">` : '<div style="color: var(--accent-color); font-size: 4rem;">💍</div>'}
+                        </div>
+                        ${product.images && product.images.length > 1 ? `
+                            <div class="thumbnail-gallery">
+                                ${thumbnailsHTML}
+                            </div>
+                        ` : ''}
+                    </div>
+
+                    <div class="product-details-section">
+                        <h1>${product.name}</h1>
+                        <div class="product-category">${product.category}</div>
+
+                        <div class="details-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">Purity</span>
+                                <span class="spec-value">${product.purity}</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Weight</span>
+                                <span class="spec-value">${product.weight}</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Category</span>
+                                <span class="spec-value">${product.category}</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Price</span>
+                                <span class="spec-value">${product.price}</span>
+                            </div>
+                        </div>
+
+                        <p class="product-description">${product.longDescription}</p>
+
+                        <div class="price-section">
+                            <span class="price-tag">${product.price}</span>
+                        </div>
+
+                        <a href="${whatsappLink}" target="_blank" class="whatsapp-btn">
+                            💬 Enquire on WhatsApp
+                        </a>
+                        <button class="enquiry-btn" onclick="copyToClipboard('${whatsappMessage}')">
+                            📋 Copy Enquiry Text
+                        </button>
+
+                        <div style="margin-top: 2rem;">
+                            <a href="collections.html?category=${product.category}" class="cta-button cta-button-secondary">
+                                View More ${product.category}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('productContainer').innerHTML = productHTML;
+
+            // Load related products
+            loadRelatedProducts(product);
+        }
+
+        // Load related products from same category
+        function loadRelatedProducts(currentProduct) {
+            const relatedProducts = getAllProducts().filter(p =>
+                p.category === currentProduct.category && p.id !== currentProduct.id
+            ).slice(0, 4);
+
+            if (relatedProducts.length > 0) {
+                const relatedSection = document.getElementById('relatedSection');
+                const relatedContainer = document.getElementById('relatedProducts');
+
+                relatedContainer.innerHTML = relatedProducts.map(product => `
+                    <div class="product-card" onclick="navigateToProduct('${product.id}')">
+                        <div class="product-image">
+                            ${product.images && product.images[0] ? `<img src="${product.images[0]}" alt="${product.name}">` : '💍'}
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">${product.category}</div>
+                            <h3 class="product-name">${product.name}</h3>
+                            <div class="product-details">
+                                <p class="text-small"><strong>Purity:</strong> ${product.purity}</p>
+                                <p class="text-small"><strong>Weight:</strong> ${product.weight}</p>
+                            </div>
+                            <div class="product-price">${product.price}</div>
+                            <button class="product-button">View Details</button>
+                        </div>
+                    </div>
+                `).join('');
+
+                relatedSection.style.display = 'block';
+            }
+        }
+
+        // Copy enquiry text to clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Enquiry text copied to clipboard!');
+            }).catch(() => {
+                alert('Failed to copy. Please try again.');
+            });
+        }
+
+        // Navigate to another product
+        function navigateToProduct(productId) {
+            window.location.href = `product.html?id=${productId}`;
+        }
+
+        // Load product details when page loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadProductDetails);
+        } else {
+            loadProductDetails();
+        }
+    </script>
+</body>
+</html>

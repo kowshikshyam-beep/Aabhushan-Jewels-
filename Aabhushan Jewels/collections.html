@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections - Aabhushan Jewels</title>
+    <meta name="description" content="Browse our complete jewellery collections including rings, necklaces, earrings, bracelets, and anklets.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <div class="header-container">
+            <div class="logo">✨ Aabhushan</div>
+            <nav id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="collections.html" class="active">Collections</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- PAGE TITLE -->
+    <section style="background-color: var(--secondary-color); border-bottom: 2px solid var(--accent-color); padding: 2rem 0; text-align: center;">
+        <div class="container">
+            <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Our Collections</h1>
+            <p style="color: var(--text-secondary); font-size: 1.1rem;">Discover our exquisite range of handcrafted jewellery</p>
+        </div>
+    </section>
+
+    <!-- SEARCH & FILTER SECTION -->
+    <section class="container">
+        <div class="search-filter-container">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Search by name, design, purity..." 
+                    autocomplete="off"
+                >
+                <button class="search-button" id="searchBtn">Search</button>
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+                <p style="margin-bottom: 1rem; color: var(--text-secondary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Filter by Category</p>
+                <div class="filter-buttons">
+                    <button class="filter-btn" data-category="All">All Products</button>
+                    <button class="filter-btn" data-category="Rings">Rings</button>
+                    <button class="filter-btn" data-category="Necklaces">Necklaces</button>
+                    <button class="filter-btn" data-category="Earrings">Earrings</button>
+                    <button class="filter-btn" data-category="Bracelets">Bracelets</button>
+                    <button class="filter-btn" data-category="Anklets">Anklets</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUCTS GRID -->
+        <div id="productsContainer" class="products-grid">
+            <!-- Products will be loaded here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Aabhushan Jewels</h3>
+                    <p>Premium handcrafted jewellery for life's most precious moments.</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/919999999999" target="_blank" title="WhatsApp">💬</a>
+                        <a href="#" target="_blank" title="Instagram">📷</a>
+                        <a href="#" target="_blank" title="Facebook">👍</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Collections</h3>
+                    <ul>
+                        <li><a href="collections.html?category=Rings">Rings</a></li>
+                        <li><a href="collections.html?category=Necklaces">Necklaces</a></li>
+                        <li><a href="collections.html?category=Earrings">Earrings</a></li>
+                        <li><a href="collections.html?category=Bracelets">Bracelets</a></li>
+                        <li><a href="collections.html">All Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><strong>Email:</strong> info@aabhushanJewels.com</p>
+                    <p><strong>Phone:</strong> +91 99999 99999</p>
+                    <p><strong>Address:</strong> Premium Jewellery Store<br>New Delhi, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aabhushan Jewels. All rights reserved. | Designed as a college project</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/filter.js"></script>
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+            });
+        });
+
+        // Apply URL filter if category is specified
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+
+            if (category) {
+                // Find and click the corresponding filter button
+                const btn = document.querySelector(`[data-category="${category}"]`);
+                if (btn) {
+                    // Simulate click to trigger filter
+                    const event = new Event('click', { bubbles: true });
+                    btn.dispatchEvent(event);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
